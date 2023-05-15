@@ -15,7 +15,7 @@
 --terrain_file data/terrain/plane.txt
 
 --char_types general
---character_files data/characters/humanoid3d.txt
+--character_files data/characters/bob.txt
 --enable_char_soft_contact false
 --enable_char_contact_fall false
 
