@@ -101,15 +101,15 @@ void cDrawCharacter::DrawCharShapes(const cCharacter& character, const tVector& 
 	const auto& mesh_defs = character.GetDrawMeshDefs();
 	size_t num_shapes = shape_defs.rows();
 
-	cDrawUtil::SetLineWidth(1);
-	for (int i = 0; i < num_shapes; ++i)
-	{
-		cKinTree::tDrawShapeDef curr_def = shape_defs.row(i);
-		int parent_joint = cKinTree::GetDrawShapeParentJoint(curr_def);
-		tMatrix parent_world_trans = character.BuildJointWorldTrans(parent_joint);
-		cDrawCharacter::DrawShape(curr_def, parent_world_trans, fill_tint, line_col);
+	// cDrawUtil::SetLineWidth(1);
+	// for (int i = 0; i < num_shapes; ++i)
+	// {
+	// 	cKinTree::tDrawShapeDef curr_def = shape_defs.row(i);
+	// 	int parent_joint = cKinTree::GetDrawShapeParentJoint(curr_def);
+	// 	tMatrix parent_world_trans = character.BuildJointWorldTrans(parent_joint);
+	// 	cDrawCharacter::DrawShape(curr_def, parent_world_trans, fill_tint, line_col);
 
-	}
+	// }
 
 	size_t num_meshes = mesh_defs.rows();
 	for (int j = 0; j < num_meshes; ++j)

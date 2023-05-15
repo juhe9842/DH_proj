@@ -1195,9 +1195,9 @@
 			"Param0": 1.00000,
 			"Param1": 1.00000,
 			"Param2": 1.00000,
-			"ColorR": 0.4706,
-			"ColorG": 0.549,
-			"ColorB": 0.6863,
+			"ColorR": 0.6392,
+			"ColorG": 0.6941,
+			"ColorB": 0.7372,
 			"ColorA": 1
 		},
 		{
@@ -1214,9 +1214,9 @@
 			"Param0": 1.00000,
 			"Param1": 1.00000,
 			"Param2": 1.00000,
-			"ColorR": 0.4706,
-			"ColorG": 0.549,
-			"ColorB": 0.6863,
+			"ColorR": 0.6392,
+			"ColorG": 0.6941,
+			"ColorB": 0.7372,
 			"ColorA": 1
 		},
 		{
@@ -1233,9 +1233,9 @@
 			"Param0": 1.00000,
 			"Param1": 1.00000,
 			"Param2": 1.00000,
-			"ColorR": 0.4706,
-			"ColorG": 0.549,
-			"ColorB": 0.6863,
+			"ColorR": 0.6392,
+			"ColorG": 0.6941,
+			"ColorB": 0.7372,
 			"ColorA": 1
 		},
 		{
@@ -1347,9 +1347,9 @@
 			"Param0": 1.00000,
 			"Param1": 1.00000,
 			"Param2": 1.00000,
-			"ColorR": 0.5392,
-			"ColorG": 0.5941,
-			"ColorB": 0.6372,
+			"ColorR": 0.6392,
+			"ColorG": 0.6941,
+			"ColorB": 0.7372,
 			"ColorA": 1
 		},
 		{
@@ -1366,9 +1366,9 @@
 			"Param0": 1.00000,
 			"Param1": 1.00000,
 			"Param2": 1.00000,
-			"ColorR": 0.3529,
-			"ColorG": 0.41176,
-			"ColorB": 0.47059,
+			"ColorR": 0.6392,
+			"ColorG": 0.6941,
+			"ColorB": 0.7372,
 			"ColorA": 1
 		},
 		{
@@ -1385,9 +1385,9 @@
 			"Param0": 1.00000,
 			"Param1": 1.00000,
 			"Param2": 1.00000,
-			"ColorR": 0.3529,
-			"ColorG": 0.41176,
-			"ColorB": 0.47059,
+			"ColorR": 0.6392,
+			"ColorG": 0.6941,
+			"ColorB": 0.7372,
 			"ColorA": 1
 		},
 		{
@@ -1404,9 +1404,9 @@
 			"Param0": 1.00000,
 			"Param1": 1.00000,
 			"Param2": 1.00000,
-			"ColorR": 0.3529,
-			"ColorG": 0.41176,
-			"ColorB": 0.47059,
+			"ColorR": 0.6392,
+			"ColorG": 0.6941,
+			"ColorB": 0.7372,
 			"ColorA": 1
 		},
 		{
@@ -1423,9 +1423,9 @@
 			"Param0": 1.00000,
 			"Param1": 1.00000,
 			"Param2": 1.00000,
-			"ColorR": 0.3529,
-			"ColorG": 0.41176,
-			"ColorB": 0.47059,
+			"ColorR": 0.6392,
+			"ColorG": 0.6941,
+			"ColorB": 0.7372,
 			"ColorA": 1
 		},
 		{
@@ -1442,9 +1442,9 @@
 			"Param0": 1.00000,
 			"Param1": 1.00000,
 			"Param2": 1.00000,
-			"ColorR": 0.3529,
-			"ColorG": 0.41176,
-			"ColorB": 0.47059,
+			"ColorR": 0.6392,
+			"ColorG": 0.6941,
+			"ColorB": 0.7372,
 			"ColorA": 1
 		},
 		{
@@ -1461,9 +1461,9 @@
 			"Param0": 1.00000,
 			"Param1": 1.00000,
 			"Param2": 1.00000,
-			"ColorR": 0.2529,
-			"ColorG": 0.31176,
-			"ColorB": 0.37059,
+			"ColorR": 0.6392,
+			"ColorG": 0.6941,
+			"ColorB": 0.7372,
 			"ColorA": 1
 		},
 		{
@@ -1480,9 +1480,9 @@
 			"Param0": 1.00000,
 			"Param1": 1.00000,
 			"Param2": 1.00000,
-			"ColorR": 0.3529,
-			"ColorG": 0.41176,
-			"ColorB": 0.47059,
+			"ColorR": 0.6392,
+			"ColorG": 0.6941,
+			"ColorB": 0.7372,
 			"ColorA": 1
 		},
 		{
@@ -1499,9 +1499,9 @@
 			"Param0": 1.00000,
 			"Param1": 1.00000,
 			"Param2": 1.00000,
-			"ColorR": 0.3529,
-			"ColorG": 0.41176,
-			"ColorB": 0.47059,
+			"ColorR": 0.6392,
+			"ColorG": 0.6941,
+			"ColorB": 0.7372,
 			"ColorA": 1
 		},
 		{
@@ -1537,9 +1537,9 @@
 			"Param0": 1.00000,
 			"Param1": 1.00000,
 			"Param2": 1.00000,
-			"ColorR": 0.3529,
-			"ColorG": 0.41176,
-			"ColorB": 0.47059,
+			"ColorR": 0.6392,
+			"ColorG": 0.6941,
+			"ColorB": 0.7372,
 			"ColorA": 1
 		},
 		{
@@ -1556,9 +1556,9 @@
 			"Param0": 1.00000,
 			"Param1": 1.00000,
 			"Param2": 1.00000,
-			"ColorR": 0.4706,
-			"ColorG": 0.549,
-			"ColorB": 0.6863,
+			"ColorR": 0.6392,
+			"ColorG": 0.6941,
+			"ColorB": 0.7372,
 			"ColorA": 1
 		}
 	],
