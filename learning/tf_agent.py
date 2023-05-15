@@ -48,7 +48,7 @@ class TFAgent(RLAgent):
         return file_path
     
     def _get_log_path(self):
-        assert(self.output_dir != '')
+        # assert(self.output_dir != '')
         file_path = self.output_dir + "/" + self.arg_file + "%i"%self.time
         return file_path
 
