@@ -15,6 +15,7 @@ class TFAgent(RLAgent):
         self.tf_scope = 'agent'
         self.graph = tf.Graph()
         self.sess = tf.Session(graph=self.graph)
+        self.time = int(time.time())
 
         super().__init__(world, id, json_data)
         self._build_graph(json_data)
@@ -43,17 +44,17 @@ class TFAgent(RLAgent):
 
     def _get_output_path(self):
         assert(self.output_dir != '')
-        file_path = self.output_dir + "/" + self.arg_file + "%i"%int(time.time()) + '/agent' + str(self.id) + '_model.ckpt'
+        file_path = self.output_dir + "/" + self.arg_file + "%i"%self.time + '/agent' + str(self.id) + '_model.ckpt'
         return file_path
     
     def _get_log_path(self):
         assert(self.output_dir != '')
-        file_path = self.output_dir + "/" + self.arg_file + "%i"%int(time.time())
+        file_path = self.output_dir + "/" + self.arg_file + "%i"%self.time
         return file_path
 
     def _get_int_output_path(self):
         assert(self.int_output_dir != '')
-        file_path = self.int_output_dir + "/" + self.arg_file + "%i"%int(time.time()) + ('/agent{:d}_models/agent{:d}_int_model_{:010d}.ckpt').format(self.id, self.id, self.iter)
+        file_path = self.int_output_dir + "/" + self.arg_file + "%i"%self.time + ('/agent{:d}_models/agent{:d}_int_model_{:010d}.ckpt').format(self.id, self.id, self.iter)
         return file_path
 
     def _build_graph(self, json_data):
