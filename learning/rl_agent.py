@@ -40,6 +40,7 @@ class RLAgent(ABC):
     
     def __init__(self, world, id, json_data):
         self.world = world
+        self.arg_file = world.arg_file
         self.id = id
         self.logger = Logger()
         self._mode = self.Mode.TRAIN
@@ -98,8 +99,9 @@ class RLAgent(ABC):
     
     def set_output_dir(self, out_dir):
         self._output_dir = out_dir
+        output_path = self._get_log_path()
         if (self._output_dir != ""):
-            self.logger.configure_output_file(out_dir + "/agent" + str(self.id) + "_log.txt")
+            self.logger.configure_output_file(output_path + "/agent" + str(self.id) + "_log.txt")
         return
 
     output_dir = property(get_output_dir, set_output_dir)
@@ -181,6 +183,10 @@ class RLAgent(ABC):
     def _get_output_path(self):
         pass
 
+    @abstractmethod
+    def _get_log_path(self):
+        pass
+    
     @abstractmethod
     def _get_int_output_path(self):
         pass

@@ -7,7 +7,8 @@ from util.logger import Logger
 class RLWorld(object):
     def __init__(self, env, arg_parser):
         TFUtil.disable_gpu()
-
+        arg_file = arg_parser.parse_string('arg_file', '')
+        self.arg_file = arg_file.strip(".txt").strip("args/")
         self.env = env
         self.arg_parser = arg_parser
         self._enable_training = True

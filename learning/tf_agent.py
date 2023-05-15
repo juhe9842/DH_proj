@@ -1,5 +1,6 @@
 import numpy as np
 import tensorflow as tf
+import time
 from abc import abstractmethod
 
 from learning.rl_agent import RLAgent
@@ -42,12 +43,17 @@ class TFAgent(RLAgent):
 
     def _get_output_path(self):
         assert(self.output_dir != '')
-        file_path = self.output_dir + '/agent' + str(self.id) + '_model.ckpt'
+        file_path = self.output_dir + "/" + self.arg_file + "%i"%int(time.time()) + '/agent' + str(self.id) + '_model.ckpt'
+        return file_path
+    
+    def _get_log_path(self):
+        assert(self.output_dir != '')
+        file_path = self.output_dir + "/" + self.arg_file + "%i"%int(time.time())
         return file_path
 
     def _get_int_output_path(self):
         assert(self.int_output_dir != '')
-        file_path = self.int_output_dir + ('/agent{:d}_models/agent{:d}_int_model_{:010d}.ckpt').format(self.id, self.id, self.iter)
+        file_path = self.int_output_dir + "/" + self.arg_file + "%i"%int(time.time()) + ('/agent{:d}_models/agent{:d}_int_model_{:010d}.ckpt').format(self.id, self.id, self.iter)
         return file_path
 
     def _build_graph(self, json_data):
