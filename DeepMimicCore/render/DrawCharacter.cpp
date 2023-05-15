@@ -98,6 +98,7 @@ void cDrawCharacter::DrawCharShapes(const cCharacter& character, const tVector& 
 {
 	assert(character.HasDrawShapes());
 	const auto& shape_defs = character.GetDrawShapeDefs();
+	const auto& mesh_defs = character.GetDrawMeshDefs();
 	size_t num_shapes = shape_defs.rows();
 
 	cDrawUtil::SetLineWidth(1);
@@ -106,17 +107,20 @@ void cDrawCharacter::DrawCharShapes(const cCharacter& character, const tVector& 
 		cKinTree::tDrawShapeDef curr_def = shape_defs.row(i);
 		int parent_joint = cKinTree::GetDrawShapeParentJoint(curr_def);
 		tMatrix parent_world_trans = character.BuildJointWorldTrans(parent_joint);
+		cDrawCharacter::DrawShape(curr_def, parent_world_trans, fill_tint, line_col);
 
-		int mesh_id = cKinTree::GetDrawShapeMeshID(curr_def);
-		if (mesh_id != gInvalidIdx)
-		{
-			const auto& mesh = character.GetMesh(mesh_id);
-			cDrawCharacter::DrawShapeMesh(curr_def, parent_world_trans, *mesh, fill_tint);
-		}
-		else
-		{
-			cDrawCharacter::DrawShape(curr_def, parent_world_trans, fill_tint, line_col);
-		}
+	}
+
+	size_t num_meshes = mesh_defs.rows();
+	for (int j = 0; j < num_meshes; ++j)
+	{
+		cKinTree::tDrawShapeDef curr_mesh_def = mesh_defs.row(j);
+		int parent_joint = cKinTree::GetDrawShapeParentJoint(curr_mesh_def);
+		tMatrix parent_world_trans = character.BuildJointWorldTrans(parent_joint);
+
+		int mesh_id = cKinTree::GetDrawShapeMeshID(curr_mesh_def);
+		const auto& mesh = character.GetMesh(j);
+		cDrawCharacter::DrawShapeMesh(curr_mesh_def, parent_world_trans, *mesh, fill_tint);
 	}
 }
 

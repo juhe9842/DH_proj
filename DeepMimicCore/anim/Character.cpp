@@ -67,7 +67,8 @@ bool cCharacter::Init(const std::string& char_file, bool load_draw_shapes)
 		if (cDrawUtil::EnableDraw() && load_draw_shapes)
 		{
 			succ &= LoadMeshes(char_file, mMeshes);
-			succ &= LoadDrawShapeDefs(char_file, mDrawShapeDefs);
+			succ &= LoadDrawShapeDefs(char_file, mDrawShapeDefs, "DrawShapeDefs");
+			succ &= LoadDrawShapeDefs(char_file, mDrawMeshDefs, "DrawMeshDefs");
 		}
 	}
 
@@ -408,6 +409,11 @@ const Eigen::MatrixXd& cCharacter::GetDrawShapeDefs() const
 	return mDrawShapeDefs;
 }
 
+const Eigen::MatrixXd& cCharacter::GetDrawMeshDefs() const
+{
+	return mDrawMeshDefs;
+}
+
 const std::shared_ptr<cDrawMesh>& cCharacter::GetMesh(int i) const
 {
 	assert(i >= 0 && i < GetNumMeshes());
@@ -443,9 +449,9 @@ std::string cCharacter::BuildStateJson(const Eigen::VectorXd& pose, const Eigen:
 }
 
 
-bool cCharacter::LoadDrawShapeDefs(const std::string& char_file, Eigen::MatrixXd& out_draw_defs) const
+bool cCharacter::LoadDrawShapeDefs(const std::string& char_file, Eigen::MatrixXd& out_draw_defs, const std::string gDrawShapeDefsKey) const
 {
-	bool succ = cKinTree::LoadDrawShapeDefs(char_file, out_draw_defs);
+	bool succ = cKinTree::LoadDrawShapeDefs(char_file, out_draw_defs, gDrawShapeDefsKey);
 	return succ;
 }
 
@@ -473,7 +479,8 @@ bool cCharacter::LoadMeshes(const std::string& char_file, std::vector<std::share
 			{
 				std::string curr_path = meshes.get(i, "").asString();
 				std::shared_ptr<cDrawMesh> curr_mesh = std::shared_ptr<cDrawMesh>(new cDrawMesh);
-				succ &= cMeshUtil::LoadObj(curr_path, *curr_mesh);
+				printf("LoadObj from %s\n", ("data/characters/meshes/" + curr_path).c_str());
+				succ &= cMeshUtil::LoadObj("data/characters/meshes/" + curr_path, *curr_mesh);
 				if (succ)
 				{
 					out_meshes[i] = curr_mesh;

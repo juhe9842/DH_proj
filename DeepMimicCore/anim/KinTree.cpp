@@ -196,7 +196,7 @@ bool cKinTree::ParseBodyDef(const Json::Value& root, cKinTree::tBodyDef& out_def
 	return succ;
 }
 
-bool cKinTree::LoadDrawShapeDefs(const std::string& char_file, Eigen::MatrixXd& out_draw_defs)
+bool cKinTree::LoadDrawShapeDefs(const std::string& char_file, Eigen::MatrixXd& out_draw_defs, const std::string& key)
 {
 	bool succ = true;
 	std::string str;
@@ -209,9 +209,9 @@ bool cKinTree::LoadDrawShapeDefs(const std::string& char_file, Eigen::MatrixXd& 
 
 	if (succ)
 	{
-		if (!root[gDrawShapeDefsKey].isNull())
+		if (!root[key].isNull())
 		{
-			Json::Value shape_defs = root.get(gDrawShapeDefsKey, 0);
+			Json::Value shape_defs = root.get(key, 0);
 			int num_shapes = shape_defs.size();
 
 			succ = true;

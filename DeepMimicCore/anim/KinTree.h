@@ -167,7 +167,7 @@ public:
 	static bool LoadBodyDefs(const std::string& char_file, Eigen::MatrixXd& out_body_defs);
 	static bool ParseBodyDef(const Json::Value& root, tBodyDef& out_def);
 	
-	static bool LoadDrawShapeDefs(const std::string& char_file, Eigen::MatrixXd& out_draw_defs);
+	static bool LoadDrawShapeDefs(const std::string& char_file, Eigen::MatrixXd& out_draw_defs, const std::string& key);
 	static bool ParseDrawShapeDef(const Json::Value& root, tDrawShapeDef& out_def);
 	
 	static cShape::eShape GetBodyShape(const Eigen::MatrixXd& body_defs, int part_id);
