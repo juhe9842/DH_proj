@@ -1,7 +1,10 @@
 {
 	"Motions": 
 	[
-		{"Weight": 3, "File": "data/motions/sie/humanoid3d_kick.txt"},
+		{"Weight": 3, "File": "data/motions/sie/sie_humanoid3d_punch_forward00.txt"},
+		{"Weight": 3, "File": "data/motions/sie/sie_humanoid3d_punch_forward01.txt"},
+		{"Weight": 3, "File": "data/motions/sie/sie_humanoid3d_punch_forward02.txt"},
+		{"Weight": 3, "File": "data/motions/sie/sie_humanoid3d_punch_left00.txt"},
 		
 		{"Weight": 2, "File": "data/motions/amass/humanoid3d_ready_to_walk_mirror.txt"},
 		{"Weight": 2, "File": "data/motions/amass/humanoid3d_walk_to_ready_mirror.txt"},
