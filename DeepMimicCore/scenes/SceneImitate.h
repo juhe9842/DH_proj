@@ -34,6 +34,9 @@ protected:
 	bool mSyncCharRootPos;
 	bool mSyncCharRootRot;
 	bool mEnableRootRotFail;
+	double mCurrMotionTime;
+	double mMeanMotionTime;
+	double mMotionTimeThreshold;
 
 	virtual void ParseKinCtrlParams(const std::shared_ptr<cArgParser>& parser, cKinCtrlBuilder::tCtrlParams& out_params) const;
 	virtual bool BuildCharacters();
@@ -42,9 +45,11 @@ protected:
 	virtual bool BuildController(const cCtrlBuilder::tCtrlParams& ctrl_params, std::shared_ptr<cCharController>& out_ctrl);
 	virtual bool BuildKinCharacter();
 	virtual bool BuildKinController();
+	// virtual int  SampleExpertMotion(const cKinCharacter* kin_char) const;
 	virtual void UpdateCharacters(double timestep);
 	virtual void UpdateKinChar(double timestep);
 
+	virtual void ResetCycleCharacters();
 	virtual void ResetCharacters();
 	virtual void ResetKinChar();
 	virtual void SyncCharacters();
