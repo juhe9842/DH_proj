@@ -45,11 +45,14 @@ protected:
 	virtual bool BuildController(const cCtrlBuilder::tCtrlParams& ctrl_params, std::shared_ptr<cCharController>& out_ctrl);
 	virtual bool BuildKinCharacter();
 	virtual bool BuildKinController();
-	// virtual int  SampleExpertMotion(const cKinCharacter* kin_char) const;
+
+	virtual void RecordGoal(int agent_id, Eigen::VectorXd& out_goal) const;
+	virtual int  GetGoalSize(int agent_id) const;
+	virtual int  GetCurrMotionID() const;
+
 	virtual void UpdateCharacters(double timestep);
 	virtual void UpdateKinChar(double timestep);
 
-	virtual void ResetCycleCharacters();
 	virtual void ResetCharacters();
 	virtual void ResetKinChar();
 	virtual void SyncCharacters();

@@ -44,7 +44,7 @@ void cKinCtrlBuilder::ParseCharCtrl(const std::string& char_ctrl_str, eCharCtrl&
 	}
 }
 
-bool cKinCtrlBuilder::CheckCtrlType(eCharCtrl& char_ctrl, const std::string& char_ctrl_str)
+bool cKinCtrlBuilder::CheckCtrlType(const eCharCtrl& char_ctrl, const std::string& char_ctrl_str)
 {
 	bool correct = false;
 	for (int i = 1; i < eCharCtrlMax; ++i)

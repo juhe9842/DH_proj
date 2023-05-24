@@ -325,6 +325,51 @@ bool cSceneImitate::BuildKinController()
 // 	return rand_motion_id;
 // }
 
+void cSceneImitate::RecordGoal(int agent_id, Eigen::VectorXd& out_goal) const
+{
+	int g_size = GetGoalSize(agent_id);
+
+	if (cKinCtrlBuilder::CheckCtrlType(mKinCtrlParams.mCharCtrl, "clips"))
+	{
+		out_goal.resize(g_size);
+
+		for (int j = 0; j < g_size; ++j)
+		{
+			out_goal[j] = 0;
+		}
+
+		int motion_id = GetCurrMotionID();
+		out_goal[motion_id] = 1;
+
+		// printf("MotionID %d.\n", motion_id);
+	}
+	else
+	{
+		out_goal = std::numeric_limits<double>::quiet_NaN() * Eigen::VectorXd::Ones(g_size);
+	}
+}
+
+int cSceneImitate::GetGoalSize(int agent_id) const
+{
+	if (cKinCtrlBuilder::CheckCtrlType(mKinCtrlParams.mCharCtrl, "clips"))
+	{
+		const auto kin_ctrl = GetKinChar()->GetController();
+		const cClipsController* clips_ctrl = dynamic_cast<const cClipsController*>(kin_ctrl.get());
+		return clips_ctrl->GetNumMotions();
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+int cSceneImitate::GetCurrMotionID() const
+{
+	const auto kin_ctrl = GetKinChar()->GetController();
+ 	const cClipsController* clips_ctrl = dynamic_cast<const cClipsController*>(kin_ctrl.get());
+	return clips_ctrl->GetCurrMotionID();
+}
+
 void cSceneImitate::UpdateCharacters(double timestep)
 {
 	UpdateKinChar(timestep);
@@ -340,7 +385,6 @@ void cSceneImitate::UpdateKinChar(double timestep)
 
 	if (curr_phase < prev_phase)
 	{
-		const auto& sim_char = GetCharacter();
 		if (cKinCtrlBuilder::CheckCtrlType(mKinCtrlParams.mCharCtrl, "clips"))
 		{
 			mCurrMotionTime += kin_char->GetMotionDuration();
@@ -351,7 +395,7 @@ void cSceneImitate::UpdateKinChar(double timestep)
 				// kin_char->GetController()->ChangeMotion(rand_motion_id);
 				// kin_char->Update(0.0);
 				// printf("Reset motion.\n");
-				ResetCycleCharacters();
+				ResetKinChar();
 				// const auto kin_ctrl = kin_char->GetController();
 				// const cClipsController* clips_ctrl = dynamic_cast<const cClipsController*>(kin_ctrl.get());
 				// printf("MotionID %d.\n", clips_ctrl->GetCurrMotionID());
@@ -359,15 +403,9 @@ void cSceneImitate::UpdateKinChar(double timestep)
 				mMotionTimeThreshold = cMathUtil::RandDouble(mMeanMotionTime*2/3, mMeanMotionTime*4/3);
 			}
 		}
+		const auto& sim_char = GetCharacter();
 		SyncKinCharNewCycle(*sim_char, *kin_char);
 	}
-}
-
-void cSceneImitate::ResetCycleCharacters()
-{
-	cRLSceneSimChar::ResetCharacters();
-
-	ResetKinChar();
 }
 
 void cSceneImitate::ResetCharacters()
