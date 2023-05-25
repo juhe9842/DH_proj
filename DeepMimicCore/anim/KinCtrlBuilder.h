@@ -32,6 +32,7 @@ public:
 	};
 	
 	static void ParseCharCtrl(const std::string& char_ctrl_str, eCharCtrl& out_char_ctrl);
+	static bool CheckCtrlType(const eCharCtrl& char_ctrl, const std::string& char_ctrl_str);
 	static bool BuildController(const tCtrlParams& params, std::shared_ptr<cKinController>& out_ctrl);
 	
 protected:

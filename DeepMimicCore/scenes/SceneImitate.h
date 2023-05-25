@@ -34,6 +34,9 @@ protected:
 	bool mSyncCharRootPos;
 	bool mSyncCharRootRot;
 	bool mEnableRootRotFail;
+	double mCurrMotionTime;
+	double mMeanMotionTime;
+	double mMotionTimeThreshold;
 
 	virtual void ParseKinCtrlParams(const std::shared_ptr<cArgParser>& parser, cKinCtrlBuilder::tCtrlParams& out_params) const;
 	virtual bool BuildCharacters();
@@ -42,6 +45,11 @@ protected:
 	virtual bool BuildController(const cCtrlBuilder::tCtrlParams& ctrl_params, std::shared_ptr<cCharController>& out_ctrl);
 	virtual bool BuildKinCharacter();
 	virtual bool BuildKinController();
+
+	virtual void RecordGoal(int agent_id, Eigen::VectorXd& out_goal) const;
+	virtual int  GetGoalSize(int agent_id) const;
+	virtual int  GetCurrMotionID() const;
+
 	virtual void UpdateCharacters(double timestep);
 	virtual void UpdateKinChar(double timestep);
 

@@ -81,7 +81,7 @@ freeglut() {
   if [ ! -d install ]; then
     make install || exit 1
   fi
-  if [ ! -f install/lib/libglut.so ]; then
+  if [ ! -f install/lib64/libglut.so ]; then
     echo "Cannot find libglut.so"; exit 1
   fi
   export FREEGLUT_INSTALL_DIR=$PWD/install/

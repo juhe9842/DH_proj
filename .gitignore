@@ -21,6 +21,7 @@
 .vs/
 __pycache__/
 output/
+jobs/
 x64/
 Debug/
 Release/external/
@@ -35,3 +36,4 @@ DeepMimicCore/third
 
 DeepMimicCore/DeepMimicCore.py
 DeepMimicCore/Makefile
+submit.sh

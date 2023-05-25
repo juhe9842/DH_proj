@@ -3,6 +3,7 @@
 #include "sim/CtController.h"
 #include "util/FileUtil.h"
 #include "util/JsonUtil.h"
+#include "anim/ClipsController.h"
 
 double cSceneImitate::CalcRewardImitate(const cSimCharacter& sim_char, const cKinCharacter& kin_char) const
 {
@@ -132,6 +133,9 @@ cSceneImitate::cSceneImitate()
 	mSyncCharRootPos = true;
 	mSyncCharRootRot = false;
 	mEnableRootRotFail = false;
+	mCurrMotionTime = 0;
+	mMeanMotionTime = 5.0;
+	mMotionTimeThreshold = 5.0;
 }
 
 cSceneImitate::~cSceneImitate()
@@ -148,6 +152,12 @@ void cSceneImitate::ParseArgs(const std::shared_ptr<cArgParser>& parser)
 	parser->ParseBool("enable_root_rot_fail", mEnableRootRotFail);
 
 	ParseKinCtrlParams(parser, mKinCtrlParams);
+
+	if (cKinCtrlBuilder::CheckCtrlType(mKinCtrlParams.mCharCtrl, "clips"))
+	{
+		parser->ParseDouble("mean_motion_time", mMeanMotionTime);
+		mMotionTimeThreshold = cMathUtil::RandDouble(mMeanMotionTime*2/3, mMeanMotionTime*4/3);
+	}
 }
 
 void cSceneImitate::Init()
@@ -297,6 +307,69 @@ bool cSceneImitate::BuildKinController()
 	return succ;
 }
 
+// int cSceneImitate::SampleExpertMotion(const cKinCharacter* kin_char) const
+// {
+// 	int rand_motion_id;
+// 	const auto kin_ctrl = kin_char->GetController();
+// 	const cClipsController* clips_ctrl = dynamic_cast<const cClipsController*>(kin_ctrl.get());
+
+// 	if (clips_ctrl != nullptr)
+// 	{
+// 		rand_motion_id = clips_ctrl->SampleMotionID();
+// 	}
+// 	else
+// 	{
+// 		rand_motion_id = kin_ctrl->GetCurrMotionID();
+// 	}
+
+// 	return rand_motion_id;
+// }
+
+void cSceneImitate::RecordGoal(int agent_id, Eigen::VectorXd& out_goal) const
+{
+	int g_size = GetGoalSize(agent_id);
+
+	if (cKinCtrlBuilder::CheckCtrlType(mKinCtrlParams.mCharCtrl, "clips"))
+	{
+		out_goal.resize(g_size);
+
+		for (int j = 0; j < g_size; ++j)
+		{
+			out_goal[j] = 0;
+		}
+
+		int motion_id = GetCurrMotionID();
+		out_goal[motion_id] = 1;
+
+		// printf("MotionID %d.\n", motion_id);
+	}
+	else
+	{
+		out_goal = std::numeric_limits<double>::quiet_NaN() * Eigen::VectorXd::Ones(g_size);
+	}
+}
+
+int cSceneImitate::GetGoalSize(int agent_id) const
+{
+	if (cKinCtrlBuilder::CheckCtrlType(mKinCtrlParams.mCharCtrl, "clips"))
+	{
+		const auto kin_ctrl = GetKinChar()->GetController();
+		const cClipsController* clips_ctrl = dynamic_cast<const cClipsController*>(kin_ctrl.get());
+		return clips_ctrl->GetNumMotions();
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+int cSceneImitate::GetCurrMotionID() const
+{
+	const auto kin_ctrl = GetKinChar()->GetController();
+ 	const cClipsController* clips_ctrl = dynamic_cast<const cClipsController*>(kin_ctrl.get());
+	return clips_ctrl->GetCurrMotionID();
+}
+
 void cSceneImitate::UpdateCharacters(double timestep)
 {
 	UpdateKinChar(timestep);
@@ -312,6 +385,24 @@ void cSceneImitate::UpdateKinChar(double timestep)
 
 	if (curr_phase < prev_phase)
 	{
+		if (cKinCtrlBuilder::CheckCtrlType(mKinCtrlParams.mCharCtrl, "clips"))
+		{
+			mCurrMotionTime += kin_char->GetMotionDuration();
+			// printf("CurrMotionTime %.3f.\n", mCurrMotionTime);
+			if (mCurrMotionTime > mMotionTimeThreshold)
+			{
+				// int rand_motion_id = SampleExpertMotion(kin_char);
+				// kin_char->GetController()->ChangeMotion(rand_motion_id);
+				// kin_char->Update(0.0);
+				// printf("Reset motion.\n");
+				ResetKinChar();
+				// const auto kin_ctrl = kin_char->GetController();
+				// const cClipsController* clips_ctrl = dynamic_cast<const cClipsController*>(kin_ctrl.get());
+				// printf("MotionID %d.\n", clips_ctrl->GetCurrMotionID());
+				mCurrMotionTime = 0.0;
+				mMotionTimeThreshold = cMathUtil::RandDouble(mMeanMotionTime*2/3, mMeanMotionTime*4/3);
+			}
+		}
 		const auto& sim_char = GetCharacter();
 		SyncKinCharNewCycle(*sim_char, *kin_char);
 	}

@@ -44,6 +44,24 @@ void cKinCtrlBuilder::ParseCharCtrl(const std::string& char_ctrl_str, eCharCtrl&
 	}
 }
 
+bool cKinCtrlBuilder::CheckCtrlType(const eCharCtrl& char_ctrl, const std::string& char_ctrl_str)
+{
+	bool correct = false;
+	for (int i = 1; i < eCharCtrlMax; ++i)
+		{
+			const std::string& name = gCharCtrlName[i];
+			if (char_ctrl_str == name)
+			{
+				if (char_ctrl == static_cast<eCharCtrl>(i))
+				{
+					correct = true;
+				}
+				break;
+			}
+		}
+	return correct;
+}
+
 bool cKinCtrlBuilder::BuildController(const tCtrlParams& params, std::shared_ptr<cKinController>& out_ctrl)
 {
 	bool succ = true;
