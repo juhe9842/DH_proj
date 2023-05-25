@@ -12,8 +12,8 @@ MKDIR = mkdir -p
 # export FREEGLUT_INC_DIR = third/freeglut-3.0.0/install/include/
 # export FREEGLUT_LIB_DIR = third/freeglut-3.0.0/install/lib
 
-PYTHON_INC = /cluster/home/chegao/miniconda3/envs/mimic/include/python3.6m
-PYTHON_LIB = /cluster/home/chegao/miniconda3/envs/mimic/lib
+PYTHON_INC = /cluster/home/xueluo/miniconda3/envs/mimic/include/python3.6m
+PYTHON_LIB = /cluster/home/xueluo/miniconda3/envs/mimic/lib/ -lpython3.6m
 
 INC = -I./ \
 	-I$(EIGEN_DIR) \

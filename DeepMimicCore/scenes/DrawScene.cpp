@@ -514,7 +514,7 @@ void cDrawScene::InitRenderResources()
 bool cDrawScene::LoadTextures()
 {
 	bool succ = true;
-	mGridTex = std::unique_ptr<cTextureDesc>(new cTextureDesc("data/textures/brick.png", true));
+	mGridTex = std::unique_ptr<cTextureDesc>(new cTextureDesc("data/textures/grid0.png", true));
 	succ &= mGridTex->IsValid();
 	return succ;
 }
