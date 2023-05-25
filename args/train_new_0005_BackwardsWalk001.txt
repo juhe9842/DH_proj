@@ -22,7 +22,7 @@
 --char_ctrls ct_pd
 --char_ctrl_files data/controllers/humanoid3d_phase_rot_ctrl.txt
 --kin_ctrl motion
---motion_file data/motions/new_0005_BackwardsWalk001.txt
+--motion_file data/motions/0005_BackwardsWald_600.txt
 --sync_char_root_pos true
 --sync_char_root_rot false
 --enable_root_rot_fail false
