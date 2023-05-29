@@ -19,8 +19,9 @@
 
 
 .vs/
+.vscode/
 __pycache__/
-output/
+
 jobs/
 x64/
 Debug/
