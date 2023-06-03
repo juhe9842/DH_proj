@@ -54,7 +54,7 @@ protected:
 	virtual void UpdateKinChar(double timestep);
 
 	virtual void ResetCharacters();
-	virtual void ResetKinChar();
+	virtual void ResetKinChar(bool isSwitching);
 	virtual void SyncCharacters();
 	virtual bool EnableSyncChar() const;
 	virtual void InitCharacterPosFixed(const std::shared_ptr<cSimCharacter>& out_char);

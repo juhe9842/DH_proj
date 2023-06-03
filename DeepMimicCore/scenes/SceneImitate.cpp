@@ -395,7 +395,7 @@ void cSceneImitate::UpdateKinChar(double timestep)
 				// kin_char->GetController()->ChangeMotion(rand_motion_id);
 				// kin_char->Update(0.0);
 				// printf("Reset motion.\n");
-				ResetKinChar();
+				ResetKinChar(true);
 				// const auto kin_ctrl = kin_char->GetController();
 				// const cClipsController* clips_ctrl = dynamic_cast<const cClipsController*>(kin_ctrl.get());
 				// printf("MotionID %d.\n", clips_ctrl->GetCurrMotionID());
@@ -412,16 +412,18 @@ void cSceneImitate::ResetCharacters()
 {
 	cRLSceneSimChar::ResetCharacters();
 
-	ResetKinChar();
+	ResetKinChar(false);
 	if (EnableSyncChar())
 	{
 		SyncCharacters();
 	}
 }
 
-void cSceneImitate::ResetKinChar()
+void cSceneImitate::ResetKinChar(bool isSwitching)
 {
-	double rand_time = CalcRandKinResetTime();
+	double rand_time;
+	if (isSwitching) {rand_time = 0.0;}
+	else {rand_time = CalcRandKinResetTime();}
 
 	const cSimCharacter::tParams& char_params = mCharParams[0];
 	const auto& kin_char = GetKinChar();
