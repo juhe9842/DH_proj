@@ -79,7 +79,6 @@ public:
 
 	virtual bool HasDrawShapes() const;
 	virtual const Eigen::MatrixXd& GetDrawShapeDefs() const;
-	virtual const Eigen::MatrixXd& GetDrawMeshDefs() const;
 	virtual const std::shared_ptr<cDrawMesh>& GetMesh(int i) const;
 	virtual int GetNumMeshes() const;
 	
@@ -94,7 +93,6 @@ protected:
 	Eigen::VectorXi mEndEffectors;
 
 	Eigen::MatrixXd mDrawShapeDefs;
-	Eigen::MatrixXd mDrawMeshDefs;
 	std::vector<std::shared_ptr<cDrawMesh>> mMeshes;
 
 	cCharacter();
@@ -103,7 +101,7 @@ protected:
 	virtual bool ParseState(const Json::Value& root, Eigen::VectorXd& out_state) const;
 	virtual std::string BuildStateJson(const Eigen::VectorXd& pose, const Eigen::VectorXd& vel) const;
 
-	virtual bool LoadDrawShapeDefs(const std::string& char_file, Eigen::MatrixXd& out_draw_defs, const std::string gDrawShapeDefsKey) const;
+	virtual bool LoadDrawShapeDefs(const std::string& char_file, Eigen::MatrixXd& out_draw_defs) const;
 	virtual bool LoadMeshes(const std::string& char_file, std::vector<std::shared_ptr<cDrawMesh>>& out_meshes) const;
 
 	virtual void RecordEndEffectors(Eigen::VectorXi& out_end_effs) const;

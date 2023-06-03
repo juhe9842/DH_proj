@@ -34,6 +34,7 @@ data/intermediate/
 data/policies/
 DeepMimicCore/objs/
 DeepMimicCore/third
+jobs/
 
 DeepMimicCore/DeepMimicCore.py
 DeepMimicCore/Makefile
