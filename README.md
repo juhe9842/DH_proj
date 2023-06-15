@@ -154,7 +154,7 @@ Or you can also use the mocap data provided by DeepMimic to train the following 
 ### Task 3
 The argument file that defines a skill selector task is almost the same as the one for a single skill imitator, with only the following changes:
 ``` bash
---kin_ctrl clips					# set to *clips*, which tells the program to learn multiple motions
+--kin_ctrl clips					# set to _clips_, which tells the program to learn multiple motions
 --motion_file data/datasets/humanoid3d_clips_walks.txt	# a file that points to the motion clips the police should learn
 --mean_motion_time 7.5					# average holding time for a single motion clip
 --sync_char_root_pos true				# enable synchronization of root position when switching motion clips
