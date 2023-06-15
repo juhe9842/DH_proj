@@ -140,7 +140,7 @@ This should generate `DeepMimicCore.py` in `DeepMimicCore/`
 
 ## How to use
 ### Task 1
-Download the Bvh files from [this database](http://mocap.cs.sfu.ca/).
+Download the BVH files from [this database](http://mocap.cs.sfu.ca/).
 
 ``` bash
 cd data/prep
@@ -152,6 +152,26 @@ Or you can also use the mocap data provided by DeepMimic to train the following 
 ### Task 2
 
 ### Task 3
+The argument file for the skill selector is almost the same as the one for single skill imitator, with only the following chages:
+``` bash
+--kin_ctrl clips					# set to clips to tell the program to learn multiple motions
+--motion_file data/datasets/humanoid3d_clips_walks.txt	# a file that points to the motion clips the police should learn
+--mean_motion_time 7.5					# average time for holding a single motion clip
+--sync_char_root_pos true				# enable synchronization for root position when switching motion clips
+--sync_char_root_rot true				# enable synchronization for root rotation when switching motion clips
+
+#IMPORTANT: The motion clips should have the same --fall_contact_bodies
+```
+
+To run the policy presented in the report, use the command
+``` bash
+python DeepMimic.py --arg_file args/run_bob_walks_args.txt
+```
+To train a skill selector, use `mpi_run.py` and specify an argument file.
+``` bash
+python mpi_run.py --arg_file args/train_bob_walks_args.txt --num_workers 16
+```
+
 
 ### Task 4
 
