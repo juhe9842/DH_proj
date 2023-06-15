@@ -1,17 +1,16 @@
 # Intro 
+This project aims to solve four specific subtasks by implementing adaptive modifications and improvements to the DeepMimic codebase.
 
-Code accompanying the following papers:
+The details of these four tasks are as follows:
 
-"DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills" \
-(https://xbpeng.github.io/projects/DeepMimic/index.html) \
-![Skills](images/deepmimic_teaser.png)
-
-"AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control" \
-(https://xbpeng.github.io/projects/AMP/index.html) \
-![Skills](images/amp_teaser.png)
-
-The framework uses reinforcement learning to train a simulated humanoid to imitate a variety
-of motion skills from mocap data.
+1. **Task 1**: Retargeting Motion capture data to the character model 'Bob'.
+![task1](images/structure_1.png)
+2. **Task 2**: Each policy imitate one motion clip.
+![task2](images/structure_2.png)
+3. **Task 3**: Single policy imitate all motion clips based on selection input.
+![task3](images/structure_3.png)
+4. **Task 4**: Single policy imitates motion styles from motion clip database based on tasks using AMP.
+![task4](images/structure_4.png)
 
 
 ## Dependencies
@@ -125,8 +124,38 @@ generate `DeepMimicCore.py` in `DeepMimicCore/`.
 	```
 This should generate `DeepMimicCore.py` in `DeepMimicCore/`
 
+## Results
+The visulization of the results in each task show as follows:
+1. **Task 1**: 
+<p align="center">
+  <img src="images/1_1.gif" width="200" /> 
+  <img src="images/1_2.gif" width="100" /> 
+  <figcaption>Visual comparison of the original BVH motion clip depicting a parkour roll on the floor starting from a kneeling position, and the retargeted motion clip applied to Bob.</figcaption>
+</p>
 
-## How to Use
+2. **Task 2**: 
+<p align="center">
+  <img src="images/2_1.gif" width="160" /> 
+  <img src="images/2_2.gif" width="160" /> 
+  <img src="images/2_3.gif" width="160" /> 
+  <img src="images/2_4.gif" width="160" /> 
+  <figcaption>Example motions from the trained policies of task 2. Left-to-right: backflip, sideflip, spinkick, and spinkick policy trained to strike a target with the character’s right foot.</figcaption>
+</p>
+
+3. **Task 3**: 
+<p align="center">
+  <img src="images/3_1.gif" width="400" /> 
+  <figcaption>Example motions from the trained policies of task 3. </figcaption>
+</p>
+
+4. **Task 4**: 
+<p align="center">
+  <img src="images/4_1.gif" width="266" /> 
+  <img src="images/4_2.gif" width="250" /> 
+  <figcaption>Example motions from the trained policies of task 4. </figcaption>
+</p>
+
+<!-- ## How to Use
 Once the python wrapper has been built, training is done entirely in python using Tensorflow.
 `DeepMimic.py` runs the visualizer used to view the simulation. Training is done with `mpi_run.py`, 
 which uses MPI to parallelize training across multiple processes.
@@ -173,7 +202,7 @@ python mpi_run.py --arg_file args/train_amp_target_humanoid3d_locomotion_args.tx
 
 Pretrained AMP models can be evaluated using:
 ```
-python DeepMimic.py --arg_file args/run_amp_target_humanoid3d_locomotion_args.txt
+python DeepMimic.py --arg_file args/run_amp_target_humanoid3d_locomotion_args.txt -->
 ```
 
 ## Interface
