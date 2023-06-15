@@ -152,7 +152,7 @@ Or you can also use the mocap data provided by DeepMimic to train the following 
 ### Task 2
 
 ### Task 3
-The argument file for the skill selector is almost the same as the one for single skill imitator, with only the following chages:
+The argument file for the skill selector is almost the same as the one for single skill imitator, with only the following changes:
 ``` bash
 --kin_ctrl clips					# set to clips to tell the program to learn multiple motions
 --motion_file data/datasets/humanoid3d_clips_walks.txt	# a file that points to the motion clips the police should learn
@@ -160,7 +160,7 @@ The argument file for the skill selector is almost the same as the one for singl
 --sync_char_root_pos true				# enable synchronization for root position when switching motion clips
 --sync_char_root_rot true				# enable synchronization for root rotation when switching motion clips
 
-#IMPORTANT: The motion clips should have the same --fall_contact_bodies
+#IMPORTANT: For one single policy, the motion clips should have the same --fall_contact_bodies
 ```
 
 To run the policy presented in the report, use the command
