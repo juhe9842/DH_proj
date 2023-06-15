@@ -4,14 +4,21 @@ This project aims to solve four specific subtasks by implementing adaptive modif
 The details of these four tasks are as follows:
 
 1. **Task 1**: Retargeting Motion capture data to the character model 'Bob'.
-![task1](images/structure_1.png)
+<p align="center">
+  <img src="images/structure_1.png" width="200" /> 
+</p>
 2. **Task 2**: Each policy imitate one motion clip.
-![task2](images/structure_2.png)
+<p align="center">
+  <img src="images/structure_2.png" width="400" /> 
+</p>
 3. **Task 3**: Single policy imitate all motion clips based on selection input.
-![task3](images/structure_3.png)
+<p align="center">
+  <img src="images/structure_3.png" width="400" /> 
+</p>
 4. **Task 4**: Single policy imitates motion styles from motion clip database based on tasks using AMP.
-![task4](images/structure_4.png)
-
+<p align="center">
+  <img src="images/structure_4.png" width="400" /> 
+</p>
 
 ## Dependencies
 
@@ -128,8 +135,8 @@ This should generate `DeepMimicCore.py` in `DeepMimicCore/`
 The visulization of the results in each task show as follows:
 1. **Task 1**: 
 <p align="center">
-  <img src="images/1_1.gif" width="200" /> 
-  <img src="images/1_2.gif" width="100" /> 
+  <img src="images/1_1.gif" width="250" /> 
+  <img src="images/1_2.gif" width="150" /> 
   <figcaption>Visual comparison of the original BVH motion clip depicting a parkour roll on the floor starting from a kneeling position, and the retargeted motion clip applied to Bob.</figcaption>
 </p>
 
@@ -202,8 +209,8 @@ python mpi_run.py --arg_file args/train_amp_target_humanoid3d_locomotion_args.tx
 
 Pretrained AMP models can be evaluated using:
 ```
-python DeepMimic.py --arg_file args/run_amp_target_humanoid3d_locomotion_args.txt -->
-```
+python DeepMimic.py --arg_file args/run_amp_target_humanoid3d_locomotion_args.txt 
+```-->
 
 ## Interface
 - the plot on the top-right shows the predictions of the value function
