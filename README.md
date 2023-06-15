@@ -3,19 +3,22 @@ This project aims to solve four specific subtasks by implementing adaptive modif
 
 The details of these four tasks are as follows:
 
-1. **Task 1**: Retargeting Motion capture data to the character model 'Bob'.
+1. [**Task 1** ](#task-1): Retargeting Motion capture data to the character model 'Bob'.
 <p align="center">
   <img src="images/structure_1.png" width="200" /> 
 </p>
-2. **Task 2**: Each policy imitate one motion clip.
+
+2. [**Task 2**](#task-2): Each policy imitate one motion clip.
 <p align="center">
   <img src="images/structure_2.png" width="400" /> 
 </p>
-3. **Task 3**: Single policy imitate all motion clips based on selection input.
+
+3. [**Task 3**](#task-3): Single policy imitate all motion clips based on selection input.
 <p align="center">
   <img src="images/structure_3.png" width="400" /> 
 </p>
-4. **Task 4**: Single policy imitates motion styles from motion clip database based on tasks using AMP.
+
+4. [**Task 4**](#task-4): Single policy imitates motion styles from motion clip database based on tasks using AMP.
 <p align="center">
   <img src="images/structure_4.png" width="400" /> 
 </p>
@@ -130,6 +133,23 @@ generate `DeepMimicCore.py` in `DeepMimicCore/`.
 	make python
 	```
 This should generate `DeepMimicCore.py` in `DeepMimicCore/`
+
+## How to use
+### Task 1
+Download the Bvh files from [this database](http://mocap.cs.sfu.ca/).
+
+``` bash
+cd data/prep
+
+# convert all .bvh files located in ./InputBvh/ into Mimic Motion files, located in ./OutputMimic/ .
+python example_script.py
+```
+Or you can also use the mocap data provided by DeepMimic to train the following tasks.
+### Task 2
+
+### Task 3
+
+### Task 4
 
 ## Results
 The visulization of the results in each task show as follows:
