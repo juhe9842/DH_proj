@@ -150,6 +150,21 @@ python example_script.py
 ```
 Or you can also use the mocap data provided by DeepMimic to train the following tasks.
 ### Task 2
+To run the policy presented in the report, use the command
+``` bash
+python DeepMimic.py --arg_file args/run_humanoid3d_spinkick_args.txt
+python DeepMimic.py --arg_file args/run_humanoid3d_cartwheel_args.txt
+python DeepMimic.py --arg_file args/run_humanoid3d_backflip_args.txt
+python DeepMimic.py --arg_file args/run_strike_humanoid3d_spinkick_args.txt
+
+```
+To train:
+``` bash
+python3 DeepMimic_Optimizer.py --arg_file args/train_amp_strike_humanoid3d_spinkick_args.txt --num_workers 16
+```
+Note: there could be a segfault when running the policy due to mesh reading errors, but it will run through eventually if you run it for multiple times.
+
+
 
 ### Task 3
 The argument file that defines a skill selector task is almost the same as the one for a single skill imitator, with only the following changes:
@@ -175,7 +190,6 @@ python mpi_run.py --arg_file args/train_bob_walks_args.txt --num_workers 16
 ### Task 4
 To run the policy presented in the report, use the command
 ``` bash
-python DeepMimic.py --arg_file args/run_amp_strike_humanoid3d_spinkick_args.txt
 python DeepMimic.py --arg_file args/run_amp_strike_humanoid3d_walk_punch_args.txt
 
 ```
