@@ -173,6 +173,17 @@ python mpi_run.py --arg_file args/train_bob_walks_args.txt --num_workers 16
 ```
 
 ### Task 4
+To run the policy presented in the report, use the command
+``` bash
+python DeepMimic.py --arg_file args/run_amp_strike_humanoid3d_spinkick_args.txt
+python DeepMimic.py --arg_file args/run_amp_strike_humanoid3d_walk_punch_args.txt
+
+```
+To train:
+``` bash
+python3 DeepMimic_Optimizer.py --arg_file args/train_amp_strike_humanoid3d_spinkick_args.txt --num_workers 16
+```
+Note: there could be a segfault when running the policy due to mesh reading errors, but it will run through eventually if you run it for multiple times.
 
 ## Results
 The visulization of the results in each task show as follows:

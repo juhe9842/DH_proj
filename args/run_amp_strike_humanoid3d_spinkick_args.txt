@@ -40,4 +40,4 @@
 --agent_files data/agents/ct_agent_humanoid_amp_tasks.txt
 --train_agents false
 
---model_files output/train_amp_strike_bob_spinkick_1684204765/agent0_model.ckpt
+--model_files data/policies/bob_amp/train_amp_strike_bob_spinkick_1684235746/agent0_model.ckpt

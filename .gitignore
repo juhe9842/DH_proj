@@ -31,7 +31,6 @@ lib/
 external/
 Backup/
 data/intermediate/
-data/policies/
 DeepMimicCore/objs/
 DeepMimicCore/third
 jobs/
